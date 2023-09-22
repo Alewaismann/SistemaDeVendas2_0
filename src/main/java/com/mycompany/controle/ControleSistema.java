@@ -11,6 +11,7 @@ import com.mycompany.visao.VisaoComputador;
 import com.mycompany.visao.VisaoMenu;
 import com.mycompany.visao.VisaoVideoGame;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -62,6 +63,7 @@ public class ControleSistema {
     }
      
     public static void listar(ArrayList<Object> produtos){
+        System.out.println("============LISTAGEM DE PRODUTOS=============");
         for(int i = 0; i < produtos.size(); i++){
             Object object = produtos.get(i);
             
@@ -74,5 +76,35 @@ public class ControleSistema {
                 System.out.println(computador.toString());
             }
         }
+        System.out.println("=============================================");
     }
+    
+    public static void remover(int indiceProduto){
+        System.out.println("==============REMOVER PRODUTO================");    
+        indiceProduto = indiceProduto -1;
+        Object object = produtos.get(indiceProduto);
+        
+        if(object instanceof VideoGame){
+            VideoGame videoGame = (VideoGame) object;
+            System.out.println("Deseja remover o produto " + videoGame.getNome() + " ? (S/N)");
+               
+        }else if(object instanceof Computador){
+            Computador computador = (Computador) object;
+            System.out.println("Deseja remover o produto " + computador.getNome() + " ? (S/N)");
+          
+        }
+        String sn = new Scanner(System.in).next().toLowerCase();
+        
+        if(sn.equals(Constante.REMOVER_SIM)){
+            try{
+               produtos.remove(indiceProduto);
+                System.out.println("Produto removido com sucesso! ");
+            }catch(Exception e){
+                System.out.println("Produto inexistente! ");
+            }
+        
+        }
+        System.out.println("============================================="); 
+    }
+        
 }

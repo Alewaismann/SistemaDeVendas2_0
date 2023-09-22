@@ -17,4 +17,6 @@ public class Constante {
     public static final int CATEGORIA_VIDEO_GAME = 1;
     public static final int CATEGORIA_COMPUTADOR = 2;
     
+    
+    public static final String REMOVER_SIM = "s";
 }

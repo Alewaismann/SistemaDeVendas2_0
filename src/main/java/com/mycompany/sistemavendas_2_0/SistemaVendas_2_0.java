@@ -28,9 +28,11 @@ public class SistemaVendas_2_0 {
            }else if(opcaoMenu == Constante.LISTAR){
                ControleSistema.listar(ControleSistema.produtos);
            
-           }
-                
-           }
-        }
+           }else if(opcaoMenu == Constante.REMOVER){
+               ControleSistema.remover(VisaoMenu.menuRemocaoProduto());
+           
+            }
+          }
+       }
     }
 
