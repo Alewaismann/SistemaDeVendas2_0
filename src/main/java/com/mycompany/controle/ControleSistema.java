@@ -82,29 +82,34 @@ public class ControleSistema {
     public static void remover(int indiceProduto){
         System.out.println("==============REMOVER PRODUTO================");    
         indiceProduto = indiceProduto -1;
-        Object object = produtos.get(indiceProduto);
+        Object object = null;
         
-        if(object instanceof VideoGame){
-            VideoGame videoGame = (VideoGame) object;
-            System.out.println("Deseja remover o produto " + videoGame.getNome() + " ? (S/N)");
-               
-        }else if(object instanceof Computador){
-            Computador computador = (Computador) object;
-            System.out.println("Deseja remover o produto " + computador.getNome() + " ? (S/N)");
-          
-        }
-        String sn = new Scanner(System.in).next().toLowerCase();
+         try{
+          object = produtos.get(indiceProduto);
+         }
+        catch(Exception e){}
         
-        if(sn.equals(Constante.REMOVER_SIM)){
-            try{
-               produtos.remove(indiceProduto);
-                System.out.println("Produto removido com sucesso! ");
-            }catch(Exception e){
-                System.out.println("Produto inexistente! ");
+         if(object != null){
+            if(object instanceof VideoGame){
+                VideoGame videoGame = (VideoGame) object;
+                System.out.println("Deseja remover o produto " + videoGame.getNome() + " ? (S/N)");
+
+            }else if(object instanceof Computador){
+                Computador computador = (Computador) object;
+                System.out.println("Deseja remover o produto " + computador.getNome() + " ? (S/N)");
+
             }
-        
-        }
+            String sn = new Scanner(System.in).next().toLowerCase();
+
+            if(sn.equals(Constante.REMOVER_SIM)){
+                    produtos.remove(indiceProduto);
+                    System.out.println("Produto removido com sucesso! ");
+
+           }
+        }else{
+             System.out.println("Produto inexistente! ");
+           }
         System.out.println("============================================="); 
-    }
-        
-}
+     }
+  }
+ 
